@@ -13,7 +13,9 @@ const topicsContainer = document.querySelector('.topics')
 axios
     .get(`https://lambda-times-backend.herokuapp.com/topics`)
     .then(response => {
-        response.data.topics.forEach(element => {
+        const tabsList = response.data.topics
+        tabsList.unshift('ALL')
+        tabsList.forEach(element => {
             elementCreator({type: 'div', classList: ['tab'], textContent: element, parent: topicsContainer})
         })
     })

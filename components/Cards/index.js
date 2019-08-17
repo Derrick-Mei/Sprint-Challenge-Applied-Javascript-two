@@ -21,7 +21,7 @@
 const cardsContainer = document.querySelector('.cards-container');
 
 function cardCreator(obj, topic) {
-    const card = elementCreator({ type: 'div', classList: ['card', topic], parent: cardsContainer, attributes:[['data-topic', topic]] });
+    const card = elementCreator({ type: 'div', classList: ['card', topic], parent: cardsContainer, attributes: [['data-topic', topic]] });
     const headline = elementCreator({ type: 'div', classList: ['headline'], textContent: obj.headline, parent: card });
     const author = elementCreator({ type: 'div', classList: ['author'], parent: card });
     const imgContainer = elementCreator({ type: 'div', classList: ['img-container'], parent: author });
@@ -40,15 +40,31 @@ axios
             });
         });
 
-        const tabsBar = document.querySelector('.title');
-        console.log(tabsBar);
+        const tabsBar = document.querySelector('.topics');
         const tabs = document.querySelectorAll('.tab');
-        console.log(tabs);
         const cards = document.querySelectorAll('.card');
-        console.log(cards);
 
-        // tabsBar.addEventListener();
-        const dataTopics = document.querySelectorAll(`[data-topic='javascript']`)
-        console.log(dataTopics)
+        tabsBar.addEventListener('click', event => {
+            if (event.target.textContent === 'ALL') {
+                tabs.forEach(tab => tab.classList.remove('active-tab'));
+                tabs[0].classList.add('active-tab');
+                
+                cards.forEach(card => (card.style.display = 'initial'));
+            } else {
+                tabs[0].classList.remove('active-tab');
+                event.target.classList.toggle('active-tab');
+
+                cards.forEach(card => (card.style.display = 'none'));
+
+                let activeTabs = document.querySelectorAll('.active-tab');
+                activeTabs.forEach(tab => {
+                    let tabCards = document.querySelectorAll(`[data-topic='${tab.textContent}']`);
+                    if (tabCards.length === 0) tabCards = document.querySelectorAll(`[data-topic='node']`);
+                    tabCards.forEach(tabCard => (tabCard.style.display = 'initial'));
+                });
+            }
+        });
+        const dataTopics = document.querySelectorAll("[data-topic='javascript']");
+        console.log('dataTopics: ', dataTopics);
     })
     .catch(err => console.log(err));

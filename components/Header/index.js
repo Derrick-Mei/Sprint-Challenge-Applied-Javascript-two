@@ -11,10 +11,10 @@
 const headerParent = document.querySelector('.header-container');
 
 function Header() {
-    const headerContainer = elementCreator({ type: 'div', classlist: ['header'], parent: headerParent });
-    const date = elementCreator({ type: 'span', classlist: ['date'], textContent: new Date(), parent: headerContainer });
+    const headerContainer = elementCreator({ type: 'div', classList: ['header'], parent: headerParent });
+    const date = elementCreator({ type: 'span', classList: ['date'], textContent: new Date(), parent: headerContainer });
     const h1 = elementCreator({ type: 'h1', textContent: 'Lambda Times', parent: headerContainer });
-    const temp = elementCreator({ type: 'span', textContent: '98°', parent: headerContainer, classlist: ['temp'] });
+    const temp = elementCreator({ type: 'span', textContent: '98°', parent: headerContainer, classList: ['temp'] });
 }
 
 Header();

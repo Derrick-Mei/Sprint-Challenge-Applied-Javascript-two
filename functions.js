@@ -5,7 +5,8 @@ function elementCreator(configObj) {
     if (configObj.parent) configObj.parent.appendChild(element);
     if (configObj.attributes) {
         configObj.attributes.forEach(attribute => {
-            element[attribute[0]] = attribute[1];
+            element.setAttribute(attribute[0], attribute[1])
+            // element[attribute[0]] = attribute[1];
         })
     }
     return element;

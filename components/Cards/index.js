@@ -48,5 +48,7 @@ axios
         console.log(cards);
 
         // tabsBar.addEventListener();
+        const dataTopics = document.querySelectorAll(`[data-topic='javascript']`)
+        console.log(dataTopics)
     })
     .catch(err => console.log(err));

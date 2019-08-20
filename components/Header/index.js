@@ -7,6 +7,14 @@
 //    <h1>Lambda Times</h1>
 //    <span class="temp">98°</span>
 //  </div >
-// And add it to the DOM in the .headerContainer component
+// And add it to the DOM in the .header-container component
+const headerParent = document.querySelector('.header-container');
 
-function Header() {}
+function Header() {
+    const headerContainer = elementCreator({ type: 'div', classList: ['header'], parent: headerParent });
+    const date = elementCreator({ type: 'span', classList: ['date'], textContent: new Date(), parent: headerContainer });
+    const h1 = elementCreator({ type: 'h1', textContent: 'Lambda Times', parent: headerContainer });
+    const temp = elementCreator({ type: 'span', textContent: '98°', parent: headerContainer, classList: ['temp'] });
+}
+
+Header();
